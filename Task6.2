@@ -59,7 +59,7 @@ pipeline {
             mail to: "berenhuang@gmail.com",
             subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
             body: "Pipeline ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}",
-            attachLog: true
+            attachmentsPattern: '**/build.log'
         }
         failure {
             echo 'Pipeline failed.'
@@ -67,7 +67,7 @@ pipeline {
             mail to: "berenhuang@gmail.com",
             subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
             body: "Pipeline ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}",
-            attachLog: true
+            attachmentsPattern: '**/build.log'
         }
     }
     
