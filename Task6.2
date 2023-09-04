@@ -64,8 +64,7 @@ pipeline {
     failure {
         echo 'Pipeline failed.'
         // Send failure notification emails
-        emailext body: "Pipeline ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}",
-        to: "berenhuang@gmail.com",
+        emailext to: "berenhuang@gmail.com",
         body: "Pipeline ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}",
         subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",                 
         attachLog: true
