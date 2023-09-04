@@ -57,15 +57,17 @@ pipeline {
             echo 'Pipeline completed successfully.'
             // Send notification emails using the Email Extension plugin
             mail to: "berenhuang@gmail.com",
-            subject: "Pipeline Successful",
-            body: "The pipeline has completed successfully."
+            subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
+            body: "Pipeline ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}",
+            attachLog: true
         }
         failure {
             echo 'Pipeline failed.'
             // Send failure notification emails
             mail to: "berenhuang@gmail.com",
-            subject: "Pipeline Failed",
-            body: "The pipeline has failed. Please review the logs."
+            subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
+            body: "Pipeline ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}",
+            attachLog: true
         }
     }
     
