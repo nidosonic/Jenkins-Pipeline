@@ -53,22 +53,23 @@ pipeline {
     }
 
     post {
-        success {
-            echo 'Pipeline completed successfully.'
-            // Send notification emails using the Email Extension plugin
-            mail to: "berenhuang@gmail.com",
-            subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
-            body: "Pipeline ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}",
-            attachmentsPattern: '**/build.log'
-        }
-        failure {
-            echo 'Pipeline failed.'
-            // Send failure notification emails
-            mail to: "berenhuang@gmail.com",
-            subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
-            body: "Pipeline ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}",
-            attachmentsPattern: '**/build.log'
+    success {
+        echo 'Pipeline completed successfully.'
+        // Send notification emails using the Email Extension plugin
+        emailext to: "berenhuang@gmail.com",
+                 subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Pipeline ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}",
+                 attachmentsPattern: '**/build.log'
+    }
+    failure {
+        echo 'Pipeline failed.'
+        // Send failure notification emails
+        emailext to: "berenhuang@gmail.com",
+                 subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Pipeline ${currentBuild.fullDisplayName} completed with status: ${currentBuild.result}",
+                 attachmentsPattern: '**/build.log'
         }
     }
+
     
 }
