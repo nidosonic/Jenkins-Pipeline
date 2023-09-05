@@ -6,42 +6,36 @@ pipeline {
             steps {
                 echo 'Building the code...'
                 // Use a build automation tool like Maven or Gradle
-                // Command: sh 'mvn clean install'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
                 echo 'Running unit and integration tests...'
                 // Use testing frameworks like JUnit or TestNG
-                // Command: sh 'mvn test'
             }
         }
         stage('Code Analysis') {
             steps {
                 echo 'Running code analysis...'
                 // Integrate a code analysis tool like SonarQube
-                // Command: sh 'sonar-scanner'
             }
         }
         stage('Security Scan') {
             steps {
                 echo 'Performing security scan...'
                 // Integrate a security scanning tool like OWASP ZAP or SonarQube
-                // Command: sh 'zap-cli -cmd'
             }
         }
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to staging server...'
                 // Deploy to your staging server using tools like Ansible or SSH
-                // Command: sh 'ansible-playbook deploy.yml'
             }
         }
         stage('Integration Tests on Staging') {
             steps {
                 echo 'Running integration tests on staging...'
                 // Run integration tests on the staging environment
-                // Command: sh 'mvn integration-test'
             }
         }
         stage('Deploy to Production') {
